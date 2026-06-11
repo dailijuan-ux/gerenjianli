@@ -1,0 +1,1219 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN" data-bs-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人简历 - 数据科学与大数据技术专业</title>
+    <!-- Bootstrap 5.3.8 核心CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons 图标库 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<style>
+        /* ========== 全局基础样式 ========== */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --card-hover-shadow: 0 12px 30px rgba(102, 126, 234, 0.15);
+            --section-bg-light: rgba(248, 249, 252, 0.5);
+            --section-bg-alt: rgba(255, 255, 255, 0.7);
+            --nav-blur-bg: rgba(255, 255, 255, 0.92);
+        }
+        * { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            overflow-x: hidden;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 50%, #f0f4ff 100%);
+            background-size: 400% 400%;
+            animation: bgShift 18s ease-in-out infinite;
+        }
+        section { padding: 5rem 0; }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -8px;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary-gradient);
+            border-radius: 3px;
+        }
+        .section-subtitle {
+            color: #6c757d;
+            font-size: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        /* ========== 导航栏 ========== */
+        .navbar {
+            transition: all 0.35s ease;
+            padding: 0.8rem 0;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .navbar-scrolled {
+            background: var(--nav-blur-bg) !important;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            padding: 0.5rem 0;
+        }
+        .navbar .nav-link {
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            border-radius: 8px;
+            transition: all 0.25s ease;
+            position: relative;
+        }
+        .navbar .nav-link:hover,
+        .navbar .nav-link.active {
+            color: #667eea !important;
+            background: rgba(102, 126, 234, 0.08);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ========== 滚动渐入动画 ========== */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .fade-up.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========== Hero 头部 ========== */
+        .hero-section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #e8ecf4 0%, #d5dce8 50%, #e2e8f5 100%);
+            background-size: 400% 400%;
+            animation: bgShift 18s ease-in-out infinite;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102,126,234,0.07) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: heroBgFloat 20s linear infinite;
+        }
+        @keyframes heroBgFloat {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-40px, -40px); }
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+        }
+        .hero-avatar {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 4px solid rgba(102,126,234,0.25);
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 8px 25px rgba(102,126,234,0.15);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-avatar img {
+            font-size: 3.5rem;
+            color: #667eea;
+        }
+        .hero-name {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #2d3748;
+            letter-spacing: 2px;
+            margin-bottom: 0.3rem;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(102,126,234,0.1);
+            backdrop-filter: blur(6px);
+            padding: 0.4rem 1.5rem;
+            border-radius: 50px;
+            color: #667eea;
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            border: 1px solid rgba(102,126,234,0.2);
+        }
+        .hero-slogan {
+            font-size: 1.25rem;
+            color: #4a5568;
+            max-width: 600px;
+            margin: 0.8rem auto 2rem;
+            line-height: 1.7;
+        }
+        .hero-scroll-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(102,126,234,0.1);
+            border: 2px solid rgba(102,126,234,0.25);
+            color: #667eea;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: heroBounce 2s ease-in-out infinite;
+        }
+        .hero-scroll-btn:hover {
+            background: rgba(102,126,234,0.2);
+            color: #667eea;
+            transform: scale(1.1);
+        }
+        @keyframes bgShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+@keyframes heroBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+
+        /* ========== 卡片通用 ========== */
+        .card {
+            border: none;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            transition: all 0.35s ease;
+            overflow: hidden;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+        }
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #fff;
+            background: var(--primary-gradient);
+            margin-bottom: 0.75rem;
+        }
+
+        /* ========== 进度条 ========== */
+        .progress {
+            height: 10px;
+            border-radius: 10px;
+            background: #e9ecef;
+            overflow: hidden;
+        }
+        .progress-bar {
+            border-radius: 10px;
+            transition: width 1.2s ease;
+        }
+        .skill-tag {
+            display: inline-block;
+            padding: 0.25rem 0.85rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin: 0.2rem;
+        }
+
+        /* ========== 时间线 ========== */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #667eea, #764ba2, transparent);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.65rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+
+        /* ========== 获奖卡片放大动效 ========== */
+        .award-card {
+            cursor: pointer;
+        }
+        .award-card:hover {
+            transform: scale(1.04) translateY(-4px);
+        }
+        .award-card .card-img-top {
+            height: 160px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 2.5rem;
+        }
+
+        /* ========== 页脚 ========== */
+        .footer-section {
+            background: #1a1a2e;
+            color: rgba(255,255,255,0.8);
+            padding: 3rem 0 1.5rem;
+        }
+        .footer-divider {
+            border-color: rgba(255,255,255,0.1);
+            margin: 1.5rem 0;
+        }
+
+        /* ========== 响应式适配 ========== */
+        @media (max-width: 768px) {
+            .hero-name { font-size: 2.2rem; }
+            .hero-slogan { font-size: 1rem; }
+            section { padding: 3rem 0; }
+            .section-title { font-size: 1.6rem; }
+}
+        @media (max-width: 576px) {
+            .hero-name { font-size: 1.8rem; }
+                        .hero-avatar { width: 130px; height: 130px; }
+        }
+
+        /* ========== 加载微调 ========== */
+        .loading-spinner {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255,255,255,0.85);
+            z-index: 99999;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+        .loading-spinner.active { display: flex; }
+
+        /* ========== 项目折叠卡片 ========== */
+        .project-card .accordion-button:not(.collapsed) {
+            background: linear-gradient(135deg, rgba(102,126,234,0.08), rgba(118,75,162,0.08));
+            color: #667eea;
+            font-weight: 600;
+        }
+        .project-card .accordion-button:focus {
+            box-shadow: none;
+            border-color: rgba(102,126,234,0.3);
+        }
+        .project-tech-badge {
+            background: rgba(102,126,234,0.1);
+            color: #667eea;
+            padding: 0.2rem 0.7rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin: 0.15rem;
+            display: inline-block;
+        }
+
+        /* ========== 头像占位 ========== */
+
+</style>
+</head>
+<body>
+<!-- ========== 加载动画遮罩 ========== -->
+<div class="loading-spinner" id="loadingSpinner">
+    <div class="text-center">
+        <div class="spinner-border text-primary" role="status" style="width:3rem;height:3rem;"></div>
+        <p class="mt-3 text-muted">正在加载资源...</p>
+    </div>
+</div>
+
+<!-- ========== 顶部导航栏 ========== -->
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
+    <div class="container">
+        <a class="navbar-brand fs-4" href="#home">
+            <i class="bi bi-file-person me-2"></i>个人简历
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="#home">首页</a></li>
+                <li class="nav-item"><a class="nav-link" href="#info">个人信息</a></li>
+                <li class="nav-item"><a class="nav-link" href="#education">教育经历</a></li>
+                <li class="nav-item"><a class="nav-link" href="#skills">技能栈</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects">项目经历</a></li>
+                <li class="nav-item"><a class="nav-link" href="#awards">获奖证书</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">自我评价</a></li>
+                <li class="nav-item"><a class="nav-link" href="#footer">联系方式</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<!-- ========== 一、首页Hero头部模块 ========== -->
+<section class="hero-section" id="home">
+    <div class="hero-content">
+        <div class="hero-avatar mx-auto">
+            <img src="images/shouye/dailijuan.jpg" alt="个人照片" class="w-100 h-100" style="object-fit:cover;">
+        </div>
+        <div class="hero-badge">大三在读 · 数据科学与大数据技术</div>
+        <h1 class="hero-name">代丽娟</h1>
+        <p class="hero-slogan">
+            <i class="bi bi-quote me-2 opacity-50"></i>
+            用数据洞察世界，以技术驱动未来
+            <i class="bi bi-quote ms-2 opacity-50"></i>
+        </p>
+        <div class="d-flex gap-3 justify-content-center flex-wrap">
+            <a href="#info" class="hero-scroll-btn" title="了解更多">
+                <i class="bi bi-chevron-down"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 二、个人基本信息模块 ========== -->
+<section id="info" style="background:linear-gradient(135deg, rgba(248,249,252,0.5), rgba(240,244,255,0.7));">
+    <div class="container">
+        <div class="text-center mb-5 fade-up">
+            <h2 class="section-title">个人信息</h2>
+            <p class="section-subtitle">Personal Information</p>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <!-- 左侧信息卡片 -->
+            <div class="col-lg-5 col-md-6 fade-up">
+                <div class="card h-100 p-4">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="card-icon"><i class="bi bi-person-badge"></i></div>
+                            <h5 class="mb-0 ms-3 fw-bold">基本信息</h5>
+                        </div>
+                        <ul class="list-unstyled mb-0">
+                            <li class="d-flex py-2 border-bottom"><span class="text-muted" style="width:90px;"><i class="bi bi-person me-2"></i>姓名</span><span class="fw-medium">代丽娟</span></li>
+                            <li class="d-flex py-2 border-bottom"><span class="text-muted" style="width:90px;"><i class="bi bi-gender-male me-2"></i>性别</span><span class="fw-medium">女</span></li>
+                            <li class="d-flex py-2 border-bottom"><span class="text-muted" style="width:90px;"><i class="bi bi-cake me-2"></i>年龄</span><span class="fw-medium">22岁</span></li>
+                            <li class="d-flex py-2 border-bottom"><span class="text-muted" style="width:90px;"><i class="bi bi-buildings me-2"></i>院校</span><span class="fw-medium">昆明学院</span></li>
+                            <li class="d-flex py-2 border-bottom"><span class="text-muted" style="width:90px;"><i class="bi bi-mortarboard me-2"></i>年级</span><span class="fw-medium">2023级（大三）</span></li>
+                            <li class="d-flex py-2"><span class="text-muted" style="width:90px;"><i class="bi bi-book me-2"></i>学制</span><span class="fw-medium">四年制本科</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- 右侧联系信息 -->
+            <div class="col-lg-5 col-md-6 fade-up">
+                <div class="card h-100 p-4">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="card-icon" style="background:linear-gradient(135deg,#f093fb,#f5576c);"><i class="bi bi-envelope-paper"></i></div>
+                            <h5 class="mb-0 ms-3 fw-bold">联系方式</h5>
+                        </div>
+                        <ul class="list-unstyled mb-0">
+                            <li class="d-flex py-2 border-bottom">
+                                <span class="text-muted" style="width:90px;"><i class="bi bi-bookmark-check me-2"></i>专业</span>
+                                <span class="fw-medium">数据科学与大数据技术</span>
+                            </li>
+                            <li class="d-flex py-2 border-bottom">
+                                <span class="text-muted" style="width:90px;"><i class="bi bi-telephone me-2"></i>电话</span>
+                                <span class="fw-medium"><a href="tel:15877965974" class="text-decoration-none" style="color:inherit;">158-7796-5974</a></span>
+                            </li>
+                            <li class="d-flex py-2 border-bottom">
+                                <span class="text-muted" style="width:90px;"><i class="bi bi-envelope me-2"></i>邮箱</span>
+                                <span class="fw-medium"><a href="mailto:1396251900@qq.com" class="text-decoration-none" style="color:inherit;">1396251900@qq.com</a></span>
+                            </li>
+                            <li class="d-flex py-2 border-bottom">
+                                <span class="text-muted" style="width:90px;"><i class="bi bi-geo-alt me-2"></i>城市</span>
+                                <span class="fw-medium">昆明市 · 官渡区</span>
+                            </li>
+                            <li class="d-flex py-2">
+                                <span class="text-muted" style="width:90px;"><i class="bi bi-globe me-2"></i>主页</span>
+                                <span class="fw-medium">github.com/dailijuan-dev</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ========== 三、教育经历模块 ========== -->
+<section id="education" style="background:linear-gradient(135deg, rgba(255,255,255,0.7), rgba(248,249,252,0.5));">
+    <div class="container">
+        <div class="text-center mb-5 fade-up">
+            <h2 class="section-title">教育经历</h2>
+            <p class="section-subtitle">Education Background</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card p-4 p-md-5 fade-up">
+                    <div class="timeline">
+                        <!-- 当前教育 -->
+                        <div class="timeline-item">
+                            <div class="d-flex flex-wrap justify-content-between align-items-start mb-2">
+                                <h5 class="fw-bold mb-1">
+                                    <i class="bi bi-mortarboard-fill me-2" style="color:#667eea;"></i>昆明学院
+                                </h5>
+                                <span class="badge bg-primary bg-gradient rounded-pill">2023.09 - 2027.06</span>
+                            </div>
+                            <p class="text-muted mb-2">
+                                <span class="fw-medium">数据科学与大数据技术</span> 专业 · 四年制本科 · 大三在读
+                            </p>
+                            <div class="mb-2">
+                                <span class="badge bg-success-subtle text-success-emphasis me-2">GPA: 3.8/4.0</span>
+                                <span class="badge bg-warning-subtle text-warning-emphasis">专业排名: 10/60 (前15%)</span>
+                            </div>
+                            <p class="fw-medium mb-2"><i class="bi bi-journal-text me-1"></i>主修课程：</p>
+                            <div class="mb-0">
+                                <span class="skill-tag" style="background:#e8f0fe;color:#1967d2;cursor:pointer;" onclick="showCourseDetail('C语言程序设计')" title="点击查看课程详情">C语言程序设计 <i class="bi bi-box-arrow-up-right ms-1" style="font-size:0.65rem;"></i></span>
+                                <span class="skill-tag" style="background:#fce8e6;color:#c5221f;cursor:pointer;" onclick="showCourseDetail('数据结构')" title="点击查看课程详情">数据结构 <i class="bi bi-box-arrow-up-right ms-1" style="font-size:0.65rem;"></i></span>
+                                <span class="skill-tag" style="background:#e6f4ea;color:#137333;cursor:pointer;" onclick="showCourseDetail('机器学习')" title="点击查看课程详情">机器学习 <i class="bi bi-box-arrow-up-right ms-1" style="font-size:0.65rem;"></i></span>
+                                <span class="skill-tag" style="background:#fef7e0;color:#ea8600;cursor:pointer;" onclick="showCourseDetail('大数据技术与应用')" title="点击查看课程详情">大数据技术与应用 <i class="bi bi-box-arrow-up-right ms-1" style="font-size:0.65rem;"></i></span>
+                                <span class="skill-tag" style="background:#f3e8fd;color:#9334e6;cursor:pointer;" onclick="showCourseDetail('数据库原理与应用')" title="点击查看课程详情">数据库原理与应用 <i class="bi bi-box-arrow-up-right ms-1" style="font-size:0.65rem;"></i></span>
+                                <span class="skill-tag" style="background:#e8f0fe;color:#1967d2;cursor:pointer;" onclick="showCourseDetail('离散数学')" title="点击查看课程详情">离散数学 <i class="bi bi-box-arrow-up-right ms-1" style="font-size:0.65rem;"></i></span>
+                                <span class="skill-tag" style="background:#fce8e6;color:#c5221f;cursor:pointer;" onclick="showCourseDetail('概率论与数理统计')" title="点击查看课程详情">概率论与数理统计 <i class="bi bi-box-arrow-up-right ms-1" style="font-size:0.65rem;"></i></span>
+                                <span class="skill-tag" style="background:#e6f4ea;color:#137333;cursor:pointer;" onclick="showCourseDetail('计算机网络')" title="点击查看课程详情">计算机网络 <i class="bi bi-box-arrow-up-right ms-1" style="font-size:0.65rem;"></i></span>
+                                <span class="skill-tag" style="background:#fef7e0;color:#ea8600;cursor:pointer;" onclick="showCourseDetail('Python程序设计')" title="点击查看课程详情">Python程序设计 <i class="bi bi-box-arrow-up-right ms-1" style="font-size:0.65rem;"></i></span>
+                                <span class="skill-tag" style="background:#f3e8fd;color:#9334e6;cursor:pointer;" onclick="showCourseDetail('Linux系统应用')" title="点击查看课程详情">Linux系统应用 <i class="bi bi-box-arrow-up-right ms-1" style="font-size:0.65rem;"></i></span>
+                                <span class="skill-tag" style="background:#e8f0fe;color:#1967d2;cursor:pointer;" onclick="showCourseDetail('面向对象程序设计')" title="点击查看课程详情">面向对象程序设计 <i class="bi bi-box-arrow-up-right ms-1" style="font-size:0.65rem;"></i></span>
+                                <span class="skill-tag" style="background:#fce8e6;color:#c5221f;cursor:pointer;" onclick="showCourseDetail('软件工程')" title="点击查看课程详情">软件工程 <i class="bi bi-box-arrow-up-right ms-1" style="font-size:0.65rem;"></i></span>
+                            </div>
+                        </div>
+                        
+                    <!-- 在校荣誉摘要 -->
+                    <div class="mt-4 p-3 rounded-3" style="background:#f8f9fc;">
+                        <div class="row g-3 text-center">
+                            <div class="col-4 col-md-3">
+                                <div class="fw-bold fs-5" style="color:#667eea;">3.8</div>
+                                <small class="text-muted">GPA</small>
+                            </div>
+                            <div class="col-4 col-md-3">
+                                <div class="fw-bold fs-5" style="color:#667eea;">前15%</div>
+                                <small class="text-muted">专业排名</small>
+                            </div>
+                            <div class="col-4 col-md-3">
+                                <div class="fw-bold fs-5" style="color:#667eea;">12门</div>
+                                <small class="text-muted">核心课程</small>
+                            </div>
+                            <div class="col-4 col-md-3 d-md-none d-lg-block">
+                                <div class="fw-bold fs-5" style="color:#667eea;">2次</div>
+                                <small class="text-muted">校级奖学金</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ========== 四、技能栈模块 ========== -->
+<section id="skills" style="background:linear-gradient(135deg, rgba(248,249,252,0.5), rgba(235,240,255,0.7));">
+    <div class="container">
+        <div class="text-center mb-5 fade-up">
+            <h2 class="section-title">技能栈</h2>
+            <p class="section-subtitle">Skills &amp; Proficiency</p>
+        </div>
+        <div class="row g-4">
+            <!-- 前端技能 -->
+            <div class="col-lg-6 col-md-6 fade-up">
+                <div class="card h-100 p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <span class="badge bg-primary me-2 rounded-pill px-3 py-2 fs-6"><i class="bi bi-cpu me-1"></i>核心</span>
+                        <h5 class="mb-0 fw-bold">数据科学核心技能</h5>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1"><span>Python (NumPy/Pandas/Matplotlib)</span><span>90%</span></div>
+                        <div class="progress"><div class="progress-bar bg-primary" role="progressbar" style="width:0%;" data-width="90"></div></div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1"><span>SQL (MySQL / SQLite / 复杂查询)</span><span>85%</span></div>
+                        <div class="progress"><div class="progress-bar bg-primary" role="progressbar" style="width:0%;" data-width="85"></div></div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1"><span>数据清洗与预处理</span><span>88%</span></div>
+                        <div class="progress"><div class="progress-bar bg-primary" role="progressbar" style="width:0%;" data-width="88"></div></div>
+                    </div>
+                    <div class="mb-0">
+                        <div class="d-flex justify-content-between mb-1"><span>数据可视化 (ECharts/Tableau)</span><span>82%</span></div>
+                        <div class="progress"><div class="progress-bar bg-info" role="progressbar" style="width:0%;" data-width="82"></div></div>
+                    </div>
+                </div>
+            </div>
+            <!-- 移动端开发 -->
+            <div class="col-lg-6 col-md-6 fade-up">
+                <div class="card h-100 p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <span class="badge bg-success me-2 rounded-pill px-3 py-2 fs-6"><i class="bi bi-diagram-3 me-1"></i>大数据</span>
+                        <h5 class="mb-0 fw-bold">大数据技术栈</h5>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1"><span>Hadoop / HDFS 基础</span><span>75%</span></div>
+                        <div class="progress"><div class="progress-bar bg-success" role="progressbar" style="width:0%;" data-width="75"></div></div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1"><span>Spark (PySpark) 基础</span><span>70%</span></div>
+                        <div class="progress"><div class="progress-bar bg-success" role="progressbar" style="width:0%;" data-width="70"></div></div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1"><span>Linux / Shell 脚本</span><span>78%</span></div>
+                        <div class="progress"><div class="progress-bar bg-success" role="progressbar" style="width:0%;" data-width="78"></div></div>
+                    </div>
+                    <div class="mb-0">
+                        <div class="d-flex justify-content-between mb-1"><span>Docker / 容器化部署</span><span>65%</span></div>
+                        <div class="progress"><div class="progress-bar bg-info" role="progressbar" style="width:0%;" data-width="65"></div></div>
+                    </div>
+                </div>
+            </div>
+            <!-- 编程基础 -->
+            <div class="col-lg-6 col-md-6 fade-up">
+                <div class="card h-100 p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <span class="badge bg-warning text-dark me-2 rounded-pill px-3 py-2 fs-6"><i class="bi bi-cpu me-1"></i>算法</span>
+                        <h5 class="mb-0 fw-bold">机器学习与算法</h5>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1"><span>Scikit-learn (分类/回归/聚类)</span><span>80%</span></div>
+                        <div class="progress"><div class="progress-bar bg-warning" role="progressbar" style="width:0%;" data-width="80"></div></div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1"><span>TensorFlow / Keras 基础</span><span>72%</span></div>
+                        <div class="progress"><div class="progress-bar bg-warning" role="progressbar" style="width:0%;" data-width="72"></div></div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1"><span>统计学 / 概率论基础</span><span>78%</span></div>
+                        <div class="progress"><div class="progress-bar bg-warning" role="progressbar" style="width:0%;" data-width="78"></div></div>
+                    </div>
+                    <div class="mb-0">
+                        <div class="d-flex justify-content-between mb-1"><span>特征工程与模型评估</span><span>75%</span></div>
+                        <div class="progress"><div class="progress-bar bg-warning" role="progressbar" style="width:0%;" data-width="75"></div></div>
+                    </div>
+                </div>
+            </div>
+            <!-- 工具与综合素质 -->
+            <div class="col-lg-6 col-md-6 fade-up">
+                <div class="card h-100 p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <span class="badge bg-danger me-2 rounded-pill px-3 py-2 fs-6"><i class="bi bi-tools me-1"></i>工具</span>
+                        <h5 class="mb-0 fw-bold">工具软件与综合能力</h5>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1"><span>Jupyter Notebook / VS Code</span><span>90%</span></div>
+                        <div class="progress"><div class="progress-bar bg-danger" role="progressbar" style="width:0%;" data-width="90"></div></div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1"><span>Git / GitHub 版本协作</span><span>85%</span></div>
+                        <div class="progress"><div class="progress-bar bg-danger" role="progressbar" style="width:0%;" data-width="85"></div></div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1"><span>Excel 高级分析 / SPSS</span><span>76%</span></div>
+                        <div class="progress"><div class="progress-bar bg-danger" role="progressbar" style="width:0%;" data-width="76"></div></div>
+                    </div>
+                    <div class="mb-0">
+                        <div class="d-flex justify-content-between mb-1"><span>团队协作 / 学术写作</span><span>80%</span></div>
+                        <div class="progress"><div class="progress-bar bg-danger" role="progressbar" style="width:0%;" data-width="80"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 技能标签分类展示 -->
+        <div class="row mt-4 fade-up">
+            <div class="col-12">
+                <div class="card p-4">
+                    <h6 class="fw-bold mb-3"><i class="bi bi-tags me-2"></i>技能标签分类</h6>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge bg-primary rounded-pill px-3 py-2 fs-6"><i class="bi bi-filetype-py me-1"></i>Python</span>
+                        <span class="badge bg-primary rounded-pill px-3 py-2 fs-6"><i class="bi bi-database me-1"></i>SQL</span>
+                        <span class="badge bg-primary rounded-pill px-3 py-2 fs-6"><i class="bi bi-cpu me-1"></i>Scikit-learn</span>
+                        <span class="badge bg-primary rounded-pill px-3 py-2 fs-6"><i class="bi bi-diagram-3 me-1"></i>Pandas</span>
+                        <span class="badge bg-success rounded-pill px-3 py-2 fs-6"><i class="bi bi-graph-up me-1"></i>NumPy</span>
+                        <span class="badge bg-success rounded-pill px-3 py-2 fs-6"><i class="bi bi-bar-chart me-1"></i>Matplotlib</span>
+                        <span class="badge bg-success rounded-pill px-3 py-2 fs-6"><i class="bi bi-box me-1"></i>TensorFlow</span>
+                        <span class="badge bg-warning text-dark rounded-pill px-3 py-2 fs-6"><i class="bi bi-hdd-stack me-1"></i>Hadoop</span>
+                        <span class="badge bg-warning text-dark rounded-pill px-3 py-2 fs-6"><i class="bi bi-lightning me-1"></i>Spark</span>
+                        <span class="badge bg-info text-dark rounded-pill px-3 py-2 fs-6"><i class="bi bi-file-spreadsheet me-1"></i>Excel</span>
+                        <span class="badge bg-info text-dark rounded-pill px-3 py-2 fs-6"><i class="bi bi-git me-1"></i>Git</span>
+                        <span class="badge bg-danger rounded-pill px-3 py-2 fs-6"><i class="bi bi-boxes me-1"></i>Docker</span>
+                        <span class="badge bg-secondary rounded-pill px-3 py-2 fs-6"><i class="bi bi-people me-1"></i>团队协作</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ========== 五、项目经历模块（重点丰富） ========== -->
+<section id="projects" style="background:linear-gradient(135deg, rgba(255,255,255,0.7), rgba(248,249,252,0.5));">
+    <div class="container">
+        <div class="text-center mb-5 fade-up">
+            <h2 class="section-title">项目经历</h2>
+            <p class="section-subtitle">Project Experience</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <!-- 项目一 -->
+                <div class="card project-card mb-4 fade-up">
+                    <div class="accordion" id="projectAccordion">
+                        <div class="accordion-item border-0">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button border-0 bg-transparent fw-bold fs-5 py-4" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#project1" aria-expanded="true">
+                                    <i class="bi bi-phone me-3" style="color:#667eea;font-size:1.4rem;"></i>
+                                    校淘淘 · 校园二手交易平台
+                                    <span class="badge bg-primary ms-3 rounded-pill">核心项目</span>
+                                </button>
+                            </h2>
+                            <div id="project1" class="accordion-collapse collapse show" data-bs-parent="#projectAccordion">
+                                <div class="accordion-body pt-0 px-4 pb-4">
+                                    <div class="d-flex flex-wrap gap-2 mb-3">
+                                        <span class="badge bg-light text-dark rounded-pill"><i class="bi bi-calendar me-1"></i>2024.03 - 2024.06</span>
+                                        <span class="badge bg-light text-dark rounded-pill"><i class="bi bi-person me-1"></i>项目成员</span>
+                                        <span class="badge bg-light text-dark rounded-pill"><i class="bi bi-layers me-1"></i>数据分析实训</span>
+                                    </div>
+                                    <p class="mb-2"><strong>项目简介：</strong>基于微信小程序+Spring Boot的校园二手商品交易平台，集成用户认证、商品发布与检索、在线聊天、交易评价等核心功能。后端采用MySQL存储用户与商品数据，通过数据可视化看板分析平台交易趋势与热门品类。</p>
+                                    <p class="mb-2"><strong>核心技术：</strong>
+                                        <span class="project-tech-badge">微信小程序</span>
+                                        <span class="project-tech-badge">Spring Boot</span>
+                                        <span class="project-tech-badge">MySQL</span>
+                                        <span class="project-tech-badge">ECharts可视化</span>
+                                        <span class="project-tech-badge">Redis缓存</span>
+                                        <span class="project-tech-badge">RESTful API</span>
+                                    </p>
+                                    <p class="mb-2"><strong>负责功能：</strong>数据库设计与搭建、商品推荐算法（基于用户行为协同过滤）、交易数据统计看板开发、后端API接口编写。利用Python Pandas对模拟交易数据进行清洗与分析，输出用户画像报告。</p>
+                                    <p class="mb-0"><strong>项目成果：</strong>完成1000+条模拟数据的全流程测试，数据看板响应<1秒；项目获得实训课程最高分，代码开源至GitHub获45+ Star；作为大数据应用案例在学院技术沙龙展示。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 项目二 -->
+                <div class="card project-card mb-4 fade-up">
+                    <div class="accordion" id="projectAccordion2">
+                        <div class="accordion-item border-0">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed border-0 bg-transparent fw-bold fs-5 py-4" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#project2" aria-expanded="false">
+                                    <i class="bi bi-shop me-3" style="color:#764ba2;font-size:1.4rem;"></i>
+                                    银龄守望 · 智慧养老互助平台
+                                    <span class="badge bg-success ms-3 rounded-pill">团队项目</span>
+                                </button>
+                            </h2>
+                            <div id="project2" class="accordion-collapse collapse" data-bs-parent="#projectAccordion2">
+                                <div class="accordion-body pt-0 px-4 pb-4">
+                                    <div class="d-flex flex-wrap gap-2 mb-3">
+                                        <span class="badge bg-light text-dark rounded-pill"><i class="bi bi-calendar me-1"></i>2025.05 - 2025.06</span>
+                                        <span class="badge bg-light text-dark rounded-pill"><i class="bi bi-person me-1"></i>数据分析 & 后端开发</span>
+                                        <span class="badge bg-light text-dark rounded-pill"><i class="bi bi-layers me-1"></i>数据科学实训</span>
+                                    </div>
+                                    <p class="mb-2"><strong>项目简介：</strong>面向社区养老场景的Web+小程序互助平台，提供老人健康档案管理、志愿者接单陪护、紧急呼叫SOS、社区活动发布与报名等功能。后端基于Flask构建，使用SQLite存储用户行为数据，通过数据分析识别高风险老人群体。</p>
+                                    <p class="mb-2"><strong>核心技术：</strong>
+                                        <span class="project-tech-badge">Python Flask</span>
+                                        <span class="project-tech-badge">微信小程序</span>
+                                        <span class="project-tech-badge">SQLite</span>
+                                        <span class="project-tech-badge">Pandas</span>
+                                        <span class="project-tech-badge">Scikit-learn</span>
+                                        <span class="project-tech-badge">ECharts</span>
+                                    </p>
+                                    <p class="mb-2"><strong>负责功能：</strong>用户行为日志采集与清洗、老人健康风险预测模型（基于决策树算法，准确率82%）、服务热力图与时段分析可视化、后端数据接口开发。</p>
+                                    <p class="mb-0"><strong>项目成果：</strong>团队项目获学院创新实践二等奖；完成200位模拟老人数据的健康风险分析；算法模型在测试集上AUC达到0.85；项目文档作为优秀范本被下届课程参考。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 项目三 -->
+                <div class="card project-card mb-4 fade-up">
+                    <div class="accordion" id="projectAccordion3">
+                        <div class="accordion-item border-0">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed border-0 bg-transparent fw-bold fs-5 py-4" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#project3" aria-expanded="false">
+                                    <i class="bi bi-palette me-3" style="color:#f093fb;font-size:1.4rem;"></i>
+                                    智灌云 · 新式地埋喷灌智能系统
+                                    <span class="badge bg-info ms-3 rounded-pill">团队项目</span>
+                                </button>
+                            </h2>
+                            <div id="project3" class="accordion-collapse collapse" data-bs-parent="#projectAccordion3">
+                                <div class="accordion-body pt-0 px-4 pb-4">
+                                    <div class="d-flex flex-wrap gap-2 mb-3">
+                                        <span class="badge bg-light text-dark rounded-pill"><i class="bi bi-calendar me-1"></i>2024.02 - 2024.03</span>
+                                        <span class="badge bg-light text-dark rounded-pill"><i class="bi bi-person me-1"></i>团队成员</span>
+                                        <span class="badge bg-light text-dark rounded-pill"><i class="bi bi-layers me-1"></i>设备升级项目</span>
+                                    </div>
+                                    <p class="mb-2"><strong>项目简介：</strong>基于物联网传感器数据与机器学习算法的新式地埋喷灌智能调控系统。通过土壤湿度、温度、降雨量等多维传感器数据，结合LSTM时间序列预测模型，自动优化喷灌策略，实现节水30%以上。配套Web管理后台实时展示环境数据与设备状态。</p>
+                                    <p class="mb-2"><strong>核心技术：</strong>
+                                        <span class="project-tech-badge">Python</span>
+                                        <span class="project-tech-badge">TensorFlow</span>
+                                        <span class="project-tech-badge">LSTM时序预测</span>
+                                        <span class="project-tech-badge">Flask</span>
+                                        <span class="project-tech-badge">MySQL</span>
+                                        <span class="project-tech-badge">ECharts</span>
+                                        <span class="project-tech-badge">传感器数据采集</span>
+                                    </p>
+                                    <p class="mb-2"><strong>负责功能：</strong>协助完成项目开发：传感器数据采集与预处理（Python Pandas）、LSTM模型构建与训练（TensorFlow）、Web管理后台前后端开发、喷灌策略优化算法、数据可视化大屏设计。</p>
+                                    <p class="mb-0"><strong>项目成果：</strong>模型预测精度MAPE=6.8%，节水效率达31.5%；Web管理后台已部署至内网服务器；项目入选学院优秀创新创业培育项目；相关研究思路已撰写为论文投稿中。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ========== 六、获奖证书模块 ========== -->
+<section id="awards" style="background:linear-gradient(135deg, rgba(248,249,252,0.5), rgba(245,240,255,0.7));">
+    <div class="container">
+        <div class="text-center mb-5 fade-up">
+            <h2 class="section-title">获奖证书</h2>
+            <p class="section-subtitle">Awards &amp; Certificates</p>
+        </div>
+        <div class="row g-4">
+            <!-- 1. 三好学生 -->
+            <div class="col-md-6 col-lg-4 fade-up">
+                <div class="card award-card h-100 border-0 shadow-sm" onclick="showCertImg('三好学生', '2023-2024学年被评为校级三好学生，品学兼优，综合素质表现突出。', 'images/zhengshu/sanhaoxuesheng.jpg')">
+                    <img src="images/zhengshu/sanhaoxuesheng.jpg" class="card-img-top" alt="三好学生" style="height:200px;object-fit:cover;">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h6 class="fw-bold mb-0">三好学生</h6>
+                            <span class="badge bg-warning text-dark rounded-pill">2023-2024</span>
+                        </div>
+                        <p class="small text-muted mb-2"><i class="bi bi-award me-1"></i>校级荣誉</p>
+                        <p class="small mb-2">品学兼优，综合素质表现突出，获校级三好学生称号。</p>
+                        <a href="javascript:void(0)" class="small text-decoration-none" onclick="showCertImg('三好学生', '2023-2024学年校级三好学生荣誉证书，品学兼优、德智体全面发展。', 'images/zhengshu/sanhaoxuesheng.jpg');event.stopPropagation();">
+                            <i class="bi bi-eye me-1"></i>点击查看奖状
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- 2. 五好学生 -->
+            <div class="col-md-6 col-lg-4 fade-up">
+                <div class="card award-card h-100 border-0 shadow-sm" onclick="showCertImg('五好学生', '2024-2025学年校级五好学生荣誉称号，在道德、学习、体育、美育、劳动方面全面发展。', 'images/zhengshu/wuhaoxuesheng.jpg')">
+                    <img src="images/zhengshu/wuhaoxuesheng.jpg" class="card-img-top" alt="五好学生" style="height:200px;object-fit:cover;">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h6 class="fw-bold mb-0">五好学生</h6>
+                            <span class="badge bg-success rounded-pill">2024-2025</span>
+                        </div>
+                        <p class="small text-muted mb-2"><i class="bi bi-award me-1"></i>校级荣誉</p>
+                        <p class="small mb-2">全面发展的校级优秀学生表彰，德智体美劳五方面均表现优异。</p>
+                        <a href="javascript:void(0)" class="small text-decoration-none" onclick="showCertImg('五好学生', '2024-2025学年校级五好学生荣誉证书。', 'images/zhengshu/wuhaoxuesheng.jpg');event.stopPropagation();">
+                            <i class="bi bi-eye me-1"></i>点击查看奖状
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- 3. 数学建模竞赛 -->
+            <div class="col-md-6 col-lg-4 fade-up">
+                <div class="card award-card h-100 border-0 shadow-sm" onclick="showCertImg('数学建模竞赛', '2025年全国大学生数学建模竞赛省级二等奖，利用线性规划与模拟推优化解决方案。', 'images/zhengshu/shuxuejianmo.jpg')">
+                    <img src="images/zhengshu/shuxuejianmo.jpg" class="card-img-top" alt="数学建模" style="height:200px;object-fit:cover;">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h6 class="fw-bold mb-0">数学建模竞赛</h6>
+                            <span class="badge bg-primary rounded-pill">2025</span>
+                        </div>
+                        <p class="small text-muted mb-2"><i class="bi bi-award me-1"></i>省级二等奖</p>
+                        <p class="small mb-2">全国大学生数学建模竞赛省级二等奖。</p>
+                        <a href="javascript:void(0)" class="small text-decoration-none" onclick="showCertImg('数学建模竞赛', '2025年全国大学生数学建模竞赛省级二等奖奖状，利用线性规划与模拟推优化城市交通流量。', 'images/zhengshu/shuxuejianmo.jpg');event.stopPropagation();">
+                            <i class="bi bi-eye me-1"></i>点击查看奖状
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- 4. 优秀志愿者 -->
+            <div class="col-md-6 col-lg-4 fade-up">
+                <div class="card award-card h-100 border-0 shadow-sm" onclick="showCertImg('优秀志愿者', '2023年昆明学院职业生涯体育活动优秀志愿者，累计志愿服务时长120小时，负责引导与技术支持工作。', 'images/zhengshu/zhiyuanzhe.jpg')">
+                    <img src="images/zhengshu/zhiyuanzhe.jpg" class="card-img-top" alt="志愿者" style="height:200px;object-fit:cover;">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h6 class="fw-bold mb-0">优秀志愿者</h6>
+                            <span class="badge bg-secondary rounded-pill">2023</span>
+                        </div>
+                        <p class="small text-muted mb-2"><i class="bi bi-award me-1"></i>荣誉称号</p>
+                        <p class="small mb-2">昆明学院职业生涯体育活动优秀志愿者，累计志愿服务时长120小时。</p>
+                        <a href="javascript:void(0)" class="small text-decoration-none" onclick="showCertImg('优秀志愿者', '2023年昆明学院职业生涯体育活动优秀志愿者荣誉证书，负责引导与技术支持工作。', 'images/zhengshu/zhiyuanzhe.jpg');event.stopPropagation();">
+                            <i class="bi bi-eye me-1"></i>点击查看奖状
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- 5. 马拉松志愿者 -->
+            <div class="col-md-6 col-lg-4 fade-up">
+                <div class="card award-card h-100 border-0 shadow-sm" onclick="showCertImg('马拉松志愿者', '2024年上海国际马拉松赛事志愿者服务证书，在赛事期间承担起点区域维序维护与参赛者引导工作。', 'images/zhengshu/malasongzhiyuanzhe.jpg')">
+                    <img src="images/zhengshu/malasongzhiyuanzhe.jpg" class="card-img-top" alt="马拉松志愿者" style="height:200px;object-fit:cover;">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h6 class="fw-bold mb-0">马拉松志愿者</h6>
+                            <span class="badge bg-info text-dark rounded-pill">2024</span>
+                        </div>
+                        <p class="small text-muted mb-2"><i class="bi bi-award me-1"></i>志愿服务</p>
+                        <p class="small mb-2">上海国际马拉松赛事志愿者服务证书。</p>
+                        <a href="javascript:void(0)" class="small text-decoration-none" onclick="showCertImg('马拉松志愿者', '2024年上海国际马拉松赛事志愿者服务证书，承担起点区域维序维护与参赛者引导工作。', 'images/zhengshu/malasongzhiyuanzhe.jpg');event.stopPropagation();">
+                            <i class="bi bi-eye me-1"></i>点击查看奖状
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- 6. 普通话等级证书 -->
+            <div class="col-md-6 col-lg-4 fade-up">
+                <div class="card award-card h-100 border-0 shadow-sm" onclick="showCertImg('普通话等级证书', '国家语言文字工作委员会颁发的普通话水平测试二级甲等证书，具备良好的语言表达能力和交际能力。', 'images/zhengshu/putonghuazhengshu.jpg')">
+                    <img src="images/zhengshu/putonghuazhengshu.jpg" class="card-img-top" alt="普通话证书" style="height:200px;object-fit:cover;">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h6 class="fw-bold mb-0">普通话等级证书</h6>
+                            <span class="badge bg-danger rounded-pill">2023</span>
+                        </div>
+                        <p class="small text-muted mb-2"><i class="bi bi-award me-1"></i>技能证书</p>
+                        <p class="small mb-2">普通话水平测试二级甲等，语言表达能力优秀。</p>
+                        <a href="javascript:void(0)" class="small text-decoration-none" onclick="showCertImg('普通话等级证书', '国家语言文字工作委员会颁发的普通话水平测试二级甲等证书，具备良好的语言表达能力和交际能力。', 'images/zhengshu/putonghuazhengshu.jpg');event.stopPropagation();">
+                            <i class="bi bi-eye me-1"></i>点击查看奖状
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- 7. 程序员证书 -->
+            <div class="col-md-6 col-lg-4 fade-up">
+                <div class="card award-card h-100 border-0 shadow-sm" onclick="showCertImg('C语言程序设计证书', '全国C语言程序设计证书,具备扎实的Python编程基础。', 'images/zhengshu/chengxusheji.jpg')">
+                    <img src="images/zhengshu/chengxusheji.jpg" class="card-img-top" alt="程序设计" style="height:200px;object-fit:cover;">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h6 class="fw-bold mb-0">计算机程序设计</h6>
+                            <span class="badge bg-primary rounded-pill">2024</span>
+                        </div>
+                        <p class="small text-muted mb-2"><i class="bi bi-award me-1"></i>技能证书</p>
+                        <p class="small mb-2">全国C语言程序设计证书,具备扎实的Python编程基础。</p>
+                        <a href="javascript:void(0)" class="small text-decoration-none" onclick="showCertImg('计算机程序设计证书', '全国C语言程序设计证书,具备扎实的Python编程基础。', 'images/zhengshu/chengxusheji.jpg');event.stopPropagation();">
+                            <i class="bi bi-eye me-1"></i>点击查看奖状
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- 8. 养老互助平台项目 -->
+            <div class="col-md-6 col-lg-4 fade-up">
+                <div class="card award-card h-100 border-0 shadow-sm" onclick="showCertImg('养老互助平台项目奖', '“银龄守望·智慧养老互助平台”项目获学院创新实践二等奖，展示了数据科学技术在社会服务中的创新应用。', 'images/zhengshu/yanglaohuzhupingtai.jpg')">
+                    <img src="images/zhengshu/yanglaohuzhupingtai.jpg" class="card-img-top" alt="养老互助" style="height:200px;object-fit:cover;">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h6 class="fw-bold mb-0">养老互助平台项目</h6>
+                            <span class="badge bg-success rounded-pill">2025</span>
+                        </div>
+                        <p class="small text-muted mb-2"><i class="bi bi-award me-1"></i>创新实践二等奖</p>
+                        <p class="small mb-2">“银龄守望”项目获学院创新实践二等奖。</p>
+                        <a href="javascript:void(0)" class="small text-decoration-none" onclick="showCertImg('养老互助平台项目奖', '“银龄守望·智慧养老互助平台”项目获学院创新实践一等奖，展示了数据科学技术在社会服务中的创新应用。', 'images/zhengshu/yanglaohuzhupingtai.jpg');event.stopPropagation();">
+                            <i class="bi bi-eye me-1"></i>点击查看奖状
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- 9. 新式地埋喷灌项目 -->
+            <div class="col-md-6 col-lg-4 fade-up">
+                <div class="card award-card h-100 border-0 shadow-sm" onclick="showCertImg('新式地埋喷灌项目奖', '“智灌云·新式地埋喷灌智能系统”项目入选学院优秀创新创业培育项目，展示了机器学习与物联网技术的融合应用。', 'images/zhengshu/xinshidimaipenguan.jpg')">
+                    <img src="images/zhengshu/xinshidimaipenguan.jpg" class="card-img-top" alt="地埋喷灌" style="height:200px;object-fit:cover;">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h6 class="fw-bold mb-0">新式地埋喷灌项目</h6>
+                            <span class="badge bg-info text-dark rounded-pill">2025</span>
+                        </div>
+                        <p class="small text-muted mb-2"><i class="bi bi-award me-1"></i>创新创业培育项目</p>
+                        <p class="small mb-2">“智灌云”项目入选学院优秀创新创业培育项目。</p>
+                        <a href="javascript:void(0)" class="small text-decoration-none" onclick="showCertImg('新式地埋喷灌项目奖', '“智灌云·新式地埋喷灌智能系统”项目入选学院优秀创新创业培育项目，展示了机器学习与物联网技术的融合应用。', 'images/zhengshu/xinshidimaipenguan.jpg');event.stopPropagation();">
+                            <i class="bi bi-eye me-1"></i>点击查看奖状
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== 七、自我评价模块 ========== -->
+<section id="about" style="background:linear-gradient(135deg, rgba(255,255,255,0.7), rgba(245,242,255,0.5));">
+    <div class="container">
+        <div class="text-center mb-5 fade-up">
+            <h2 class="section-title">自我评价</h2>
+            <p class="section-subtitle">Self Evaluation</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-11 fade-up">
+                <div class="card p-4 p-md-5 border-0 shadow-sm" style="max-width:100%;">
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="card-icon me-3"><i class="bi bi-chat-quote"></i></div>
+                        <h5 class="mb-0 fw-bold">关于我</h5>
+                    </div>
+                    <div class="mb-4">
+                        <p>我是一名就读于昆明学院数据科学与大数据技术专业的大三学生。经过近三年的专业学习与项目实践，我系统掌握了数据科学的核心知识体系，具备扎实的数学基础、编程能力和数据分析工程实践能力。</p>
+                    </div>
+                    <div class="row g-4 mb-3">
+                        <div class="col-md-6">
+                            <div class="p-3 rounded-3" style="background:#f0f4ff;">
+                                <h6 class="fw-bold mb-2"><i class="bi bi-book me-2" style="color:#667eea;"></i>学习能力</h6>
+                                <p class="small mb-0 text-muted">专业成绩位列年级前7%，连续两年获得校级奖学金。课余时间自主学习 Spark、TensorFlow 等前沿技术，不断拓展技术视野，保持对新技术的学习热情。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 rounded-3" style="background:#f3e8fd;">
+                                <h6 class="fw-bold mb-2"><i class="bi bi-code me-2" style="color:#764ba2;"></i>专业能力</h6>
+                                <p class="small mb-0 text-muted">熟练掌握 Python、SQL、机器学习等数据科学核心技术栈，具备独立完成数据分析与建模全流程的能力。累计完成3个完整数据科学项目，代码量超过15000行。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 rounded-3" style="background:#e6f4ea;">
+                                <h6 class="fw-bold mb-2"><i class="bi bi-tools me-2" style="color:#137333;"></i>实践能力</h6>
+                                <p class="small mb-0 text-muted">积极参与各类专业竞赛与实训项目，获全国大学生数学建模竞赛省级奖项。注重工程化开发流程，熟练使用 Jupyter、Git 等工具进行数据分析与版本协作，具备良好的代码规范和学术写作习惯。</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-3 rounded-3" style="background:#fef7e0;">
+                                <h6 class="fw-bold mb-2"><i class="bi bi-people me-2" style="color:#ea8600;"></i>团队协作</h6>
+                                <p class="small mb-0 text-muted">担任班级学习委员，多次组织小组项目开发与学术研讨。在团队项目中善于沟通协作，乐于分享技术经验。曾带领团队完成数据科学项目开发，具备基本的项目管理与跨学科协作能力。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-3 rounded-3 mb-3" style="background:#fce8e6;">
+                        <h6 class="fw-bold mb-2"><i class="bi bi-compass me-2" style="color:#c5221f;"></i>职业规划</h6>
+                        <p class="small mb-0 text-muted">未来希望从事数据分析或大数据开发方向的工作。计划在大三暑期寻找实习机会，将所学知识应用于实际商业数据场景，积累行业经验。长期目标是成为一名能够独立负责数据科学全流程的高级数据工程师，持续用数据驱动业务决策与创新。</p>
+                    </div>
+                    <div class="text-end">
+                        <i class="bi bi-quote text-muted opacity-25" style="font-size:1.5rem;"></i>
+                        <p class="small text-muted fst-italic mb-0">用数据洞察世界，以技术驱动未来。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ========== 八、页脚模块 ========== -->
+<footer class="footer-section" id="footer">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-6">
+                <h5 class="text-white mb-3"><i class="bi bi-file-person me-2"></i>代丽娟</h5>
+                <p class="small mb-1"><i class="bi bi-geo-alt me-2"></i>昆明市官渡区 · 昆明学院</p>
+                <p class="small mb-1"><i class="bi bi-envelope me-2"></i><a href="mailto:1396251900@qq.com" class="text-decoration-none" style="color:inherit;">1396251900@qq.com</a></p>
+                <p class="small mb-1"><i class="bi bi-telephone me-2"></i><a href="tel:15877965974" class="text-decoration-none" style="color:inherit;">158-7796-5974</a></p>
+                <p class="small mb-0"><i class="bi bi-github me-2"></i>github.com/dailijuan-dev</p>
+            </div>
+            <div class="col-md-6">
+                <h5 class="text-white mb-3"><i class="bi bi-link-45deg me-2"></i>快速导航</h5>
+                <div class="d-flex flex-wrap gap-2">
+                    <a href="#home" class="text-decoration-none small text-light-emphasis me-3">首页</a>
+                    <a href="#info" class="text-decoration-none small text-light-emphasis me-3">个人信息</a>
+                    <a href="#education" class="text-decoration-none small text-light-emphasis me-3">教育经历</a>
+                    <a href="#skills" class="text-decoration-none small text-light-emphasis me-3">技能栈</a>
+                    <a href="#projects" class="text-decoration-none small text-light-emphasis me-3">项目经历</a>
+                    <a href="#awards" class="text-decoration-none small text-light-emphasis me-3">获奖证书</a>
+                    <a href="#about" class="text-decoration-none small text-light-emphasis">自我评价</a>
+                </div>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="small mb-0">&copy; 2026 代丽娟 · 个人简历</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ========== 奖状查看模态框 ========== -->
+<div class="modal fade" id="certModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border-0 shadow-lg" style="border-radius:16px;">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title fw-bold" id="certModalTitle">奖状证书</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center p-3">
+                <img id="certModalImage" src="" alt="奖状证书" style="max-width:100%;max-height:70vh;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,0.1);">
+                <p class="small text-muted mt-3 mb-0" id="certModalDesc">奖状说明</p>
+            </div>
+            <div class="modal-footer border-0 justify-content-center pt-0">
+                <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ========== 加载 Bootstrap JS ========== -->
+<!-- 课程详情模态框 -->
+<div class="modal fade" id="courseModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border-0 shadow-lg" style="border-radius:16px;">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title fw-bold" id="courseModalTitle">课程详情</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-4" id="courseModalBody">
+                <p class="text-muted">加载中...</p>
+            </div>
+            <div class="modal-footer border-0 justify-content-center pt-0">
+                <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// 课程详情数据
+var courseDetails = {
+    'C语言程序设计': '<h6 class=\"fw-bold mb-3\">🔤 C语言程序设计</h6><p><strong>课程简介：</strong>系统学习C语言的基本语法、数据类型、流程控制、函数、指针、结构体等核心知识，培养学生结构化编程思维和底层编程能力。</p><p><strong>课程内容：</strong></p><ul><li>C语言语法基础与数据类型</li><li>运算符与表达式</li><li>流程控制（分支/循环）</li><li>函数与作用域</li><li>指针与内存管理</li><li>结构体与文件操作</li></ul><p><strong>学习成绩：</strong>91分（GPA 4.0）</p>',
+    '数据结构': '<h6 class=\"fw-bold mb-3\">📊 数据结构</h6><p><strong>课程简介：</strong>系统学习常见数据结构的逻辑结构、存储结构及相关算法。掌握线性表、树、图、哈希表等核心数据结构，培养算法设计与分析能力。</p><p><strong>课程内容：</strong></p><ul><li>线性表（顺序表/链表）</li><li>栈与队列</li><li>树与二叉树（遍历/线索化）</li><li>图（存储/遍历/最短路径）</li><li>哈希表与查找</li><li>排序算法（快排/归并/堆排）</li></ul><p><strong>学习成绩：</strong>88分（GPA 3.7）</p>',
+    '机器学习': '<h6 class=\"fw-bold mb-3\">🤖 机器学习</h6><p><strong>课程简介：</strong>学习机器学习的基本概念与经典算法，涵盖监督学习、无监督学习、集成学习等核心内容，使用Python Scikit-learn进行实践。</p><p><strong>课程内容：</strong></p><ul><li>机器学习基本概念与流程</li><li>线性回归与逻辑回归</li><li>决策树与随机森林</li><li>支持向量机（SVM）</li><li>K近邻与K均值聚类</li><li>模型评估与交叉验证</li></ul><p><strong>学习成绩：</strong>89分（GPA 3.8）</p>',
+    '大数据技术与应用': '<h6 class=\"fw-bold mb-3\">📊 大数据技术与应用</h6><p><strong>课程简介：</strong>学习大数据技术体系与生态系统，掌握Hadoop HDFS、MapReduce、Spark等核心技术，了解大数据在各行业的应用场景与解决方案。</p><p><strong>课程内容：</strong></p><ul><li>大数据概述与技术体系</li><li>HDFS分布式文件系统</li><li>MapReduce编程模型</li><li>Spark基础与RDD</li><li>数据仓库与Hive基础</li><li>大数据应用案例分析</li></ul><p><strong>学习成绩：</strong>87分（GPA 3.6）</p>',
+    '数据库原理与应用': '<h6 class=\"fw-bold mb-3\">🗄️ 数据库原理与应用</h6><p><strong>课程简介：</strong>系统学习关系数据库的理论基础与设计方法，掌握SQL语言、事务管理、并发控制以及数据库设计范式。</p><p><strong>课程内容：</strong></p><ul><li>关系数据模型与ER图</li><li>SQL高级查询与优化</li><li>数据库规范化设计</li><li>事务与ACID特性</li><li>索引与查询性能优化</li><li>MySQL实战应用</li></ul><p><strong>学习成绩：</strong>90分（GPA 3.9）</p>',
+    '离散数学': '<h6 class=\"fw-bold mb-3\">🧮 离散数学</h6><p><strong>课程简介：</strong>学习离散数学的基本理论与方法，包括数理逻辑、集合论、图论、代数系统等内容，为计算机科学奠定坚实的数学基础。</p><p><strong>课程内容：</strong></p><ul><li>命题逻辑与谓词逻辑</li><li>集合论与关系</li><li>函数与映射</li><li>图论基础</li><li>树与生成树</li><li>代数系统初步</li></ul><p><strong>学习成绩：</strong>86分（GPA 3.4）</p>',
+    '概率论与数理统计': '<h6 class=\"fw-bold mb-3\">📈 概率论与数理统计</h6><p><strong>课程简介：</strong>学习概率论与数理统计的基本理论与方法，掌握随机变量、概率分布、参数估计、假设检验等核心内容。</p><p><strong>课程内容：</strong></p><ul><li>随机事件与概率</li><li>随机变量与分布函数</li><li>大数定律与中心极限定理</li><li>参数估计</li><li>假设检验</li><li>回归分析与相关分析</li></ul><p><strong>学习成绩：</strong>91分（GPA 4.0）</p>',
+    '计算机网络': '<h6 class=\"fw-bold mb-3\">🌍 计算机网络</h6><p><strong>课程简介：</strong>学习计算机网络的体系结构与协议，掌握TCP/IP协议栈、HTTP协议、Socket编程等网络核心知识。</p><p><strong>课程内容：</strong></p><ul><li>OSI七层模型与TCP/IP模型</li><li>IP地址与子网划分</li><li>TCP与UDP协议</li><li>HTTP/HTTPS协议</li><li>Socket编程基础</li><li>网络安全基础</li></ul><p><strong>学习成绩：</strong>88分（GPA 3.7）</p>',
+    'Python程序设计': '<h6 class=\"fw-bold mb-3\">🐍 Python程序设计</h6><p><strong>课程简介：</strong>系统学习Python编程语言的核心语法与编程范式，掌握面向对象编程、文件操作、异常处理以及数据分析基础。</p><p><strong>课程内容：</strong></p><ul><li>Python语法基础与数据类型</li><li>函数与模块化编程</li><li>面向对象编程</li><li>文件操作与异常处理</li><li>NumPy与Pandas入门</li><li>数据可视化基础</li></ul><p><strong>学习成绩：</strong>93分（GPA 4.0）</p>',
+    'Linux系统应用': '<h6 class=\"fw-bold mb-3\">🐧 Linux系统应用</h6><p><strong>课程简介：</strong>学习Linux操作系统的基本使用与管理，掌握Shell命令操作、文件系统管理、用户权限、进程管理等技能。</p><p><strong>课程内容：</strong></p><ul><li>Linux系统安装与基本配置</li><li>Shell命令与脚本编程</li><li>文件系统与权限管理</li><li>进程管理与系统监控</li><li>软件包管理</li><li>Linux环境编程基础</li></ul><p><strong>学习成绩：</strong>85分（GPA 3.3）</p>',
+    '面向对象程序设计': '<h6 class=\"fw-bold mb-3\">📦 面向对象程序设计</h6><p><strong>课程简介：</strong>学习面向对象编程的核心思想与设计方法，掌握封装、继承、多态、抽象等核心概念，培养面向对象的分析与设计能力。</p><p><strong>课程内容：</strong></p><ul><li>面向对象的基本概念</li><li>类与对象的设计</li><li>继承与多态</li><li>抽象类与接口</li><li>异常处理机制</li><li>设计模式入门</li></ul><p><strong>学习成绩：</strong>87分（GPA 3.6）</p>',
+    '软件工程': '<h6 class=\"fw-bold mb-3\">📋 软件工程</h6><p><strong>课程简介：</strong>学习软件工程的基本原理和开发方法论，掌握需求分析、系统设计、项目管理、测试流程等软件开发全生命周期知识。</p><p><strong>课程内容：</strong></p><ul><li>软件生命周期模型</li><li>需求分析技术</li><li>UML统一建模语言</li><li>设计模式基础</li><li>敏捷开发方法</li><li>软件测试与质量保证</li></ul><p><strong>学习成绩：</strong>88分（GPA 3.7）</p>'
+};
+
+function showCourseDetail(courseName) {
+    var modal = new bootstrap.Modal(document.getElementById('courseModal'));
+    document.getElementById('courseModalTitle').textContent = courseName;
+    var body = document.getElementById('courseModalBody');
+    if (courseDetails[courseName]) {
+        body.innerHTML = courseDetails[courseName];
+    } else {
+        body.innerHTML = '<p class=\"text-muted\">暂无该课程的详细信息。</p>';
+    }
+    modal.show();
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+</script>
+
+<script>
+(function() {
+    'use strict';
+    // ===== 加载完成隐藏Loading =====
+    var spinner = document.getElementById('loadingSpinner');
+    if (spinner) { spinner.classList.remove('active'); }
+
+    // ===== 1. 导航栏滚动变色 =====
+    var navbar = document.getElementById('mainNavbar');
+    function updateNavbar() {
+        if (window.scrollY > 60) {
+            navbar.classList.add('navbar-scrolled');
+            navbar.style.background = 'rgba(255,255,255,0.92)';
+        } else {
+            navbar.classList.remove('navbar-scrolled');
+            navbar.style.background = 'transparent';
+        }
+    }
+    window.addEventListener('scroll', updateNavbar, { passive: true });
+    updateNavbar();
+
+    // ===== 2. 滚动渐入动画（IntersectionObserver） =====
+    var fadeElements = document.querySelectorAll('.fade-up');
+    var fadeObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                fadeObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    fadeElements.forEach(function(el) { fadeObserver.observe(el); });
+
+    // ===== 3. 技能进度条动画 =====
+    var progressBars = document.querySelectorAll('.progress-bar[data-width]');
+    var progressObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                var bar = entry.target;
+                var targetWidth = bar.getAttribute('data-width');
+                setTimeout(function() {
+                    bar.style.transition = 'width 1.2s cubic-bezier(0.22, 1, 0.36, 1)';
+                    bar.style.width = targetWidth + '%';
+                }, 200);
+                progressObserver.unobserve(bar);
+            }
+        });
+    }, { threshold: 0.3 });
+    progressBars.forEach(function(bar) { progressObserver.observe(bar); });
+
+    // ===== 4. 导航栏激活状态更新 =====
+    var sections = document.querySelectorAll('section[id]');
+    var navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    function updateActiveNav() {
+        var scrollPos = window.scrollY + 120;
+        var currentId = '';
+        sections.forEach(function(section) {
+            var top = section.offsetTop;
+            var height = section.offsetHeight;
+            if (scrollPos >= top && scrollPos < top + height) {
+                currentId = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(function(link) {
+            link.classList.remove('active');
+            var href = link.getAttribute('href');
+            if (href === '#' + currentId) {
+                link.classList.add('active');
+            }
+        });
+    }
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+    updateActiveNav();
+
+    // ===== 5. 点击导航栏后自动收起（移动端） =====
+    var navCollapse = document.getElementById('navbarNav');
+    navLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+            var bsCollapse = bootstrap.Collapse.getInstance(navCollapse);
+            if (bsCollapse) { bsCollapse.hide(); }
+        });
+    });
+
+})();
+
+// ===== 7. 奖状查看 =====
+function showCertImg(title, desc, imgSrc) {
+    var modal = new bootstrap.Modal(document.getElementById("certModal"));
+    document.getElementById("certModalTitle").textContent = title;
+    var imgEl = document.getElementById("certModalImage");
+    if (imgEl) { imgEl.src = imgSrc; }
+    document.getElementById("certModalDesc").textContent = desc;
+    modal.show();
+}
+</script>
+
+</body>
+</html>
+
